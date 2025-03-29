@@ -1,0 +1,69 @@
+<app-header></app-header>
+<ion-content class="ion-padding">
+
+  <h2>Catálogo de Pokémon</h2>
+
+  <ion-button expand="block" color="danger" (click)="logout()" style="margin-bottom: 16px;">
+    Cerrar Sesión
+  </ion-button>
+
+  <ion-slides pager="true" *ngIf="featuredPokemon.length; else sliderSkeleton">
+    <ion-slide *ngFor="let poke of featuredPokemon">
+      <ion-card>
+        <img [src]="poke.image" alt="{{ poke.name }}" />
+        <ion-card-header>
+          <ion-card-title>{{ poke.name | titlecase }}</ion-card-title>
+        </ion-card-header>
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
+
+  <ng-template #sliderSkeleton>
+    <ion-slides>
+      <ion-slide *ngFor="let i of [1,2,3]">
+        <ion-card>
+          <ion-skeleton-text animated style="width: 100%; height: 150px;"></ion-skeleton-text>
+          <ion-card-header>
+            <ion-skeleton-text animated style="width: 60%; height: 20px;"></ion-skeleton-text>
+          </ion-card-header>
+        </ion-card>
+      </ion-slide>
+    </ion-slides>
+  </ng-template>
+
+  <h2>Catálogo de Pokémon</h2>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6" size-md="4" *ngFor="let poke of catalogPokemon">
+        <ion-card>
+          <img [src]="poke.image" alt="{{ poke.name }}" />
+          <ion-card-header>
+            <ion-card-title>{{ poke.name | titlecase }}</ion-card-title>
+            <p>Precio: ${{ poke.price }}</p>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-button expand="block" fill="outline" color="primary" (click)="viewDetails(poke)">Ver
+              Detalle</ion-button>
+            <ion-button expand="block" color="success" (click)="addToCart(poke)">Agregar al Carrito</ion-button>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <div *ngIf="loadingCatalog">
+    <ion-row>
+      <ion-col size="6" size-md="4" *ngFor="let i of [1,2,3,4,5,6]">
+        <ion-card>
+          <ion-skeleton-text animated style="width: 100%; height: 100px;"></ion-skeleton-text>
+          <ion-card-header>
+            <ion-skeleton-text animated style="width: 50%; height: 20px;"></ion-skeleton-text>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </div>
+
+</ion-content>
+<app-footer></app-footer>

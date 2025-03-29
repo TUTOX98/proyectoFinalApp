@@ -1,0 +1,39 @@
+#login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  
+  #login-card {
+    width: 100%;
+    max-width: 400px;
+    padding: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    border-radius: 16px;
+    background-color: #1e1e1e;
+  }
+  
+  ion-card-title {
+    text-align: center;
+    font-size: 1.4rem;
+    margin-bottom: 8px;
+  }
+  
+  ion-item {
+    --background: transparent;
+    margin-bottom: 12px;
+  }
+  
+  ion-label {
+    color: #ffffff;
+  }
+  
+  ion-input {
+    color: #ffffff;
+  }
+  
+  ion-button {
+    margin-top: 12px;
+  }
+  

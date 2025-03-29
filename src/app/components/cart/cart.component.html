@@ -1,0 +1,36 @@
+<ion-content class="ion-padding">
+
+  <ion-button fill="clear" color="primary" (click)="goBack()">
+    <ion-icon name="arrow-back-outline" slot="start"></ion-icon>
+    Volver
+  </ion-button>
+  
+  <h2>Carrito de Compras</h2>
+
+  <div *ngIf="cart.length === 0">
+    <p>Tu carrito está vacío.</p>
+  </div>
+
+  <ion-list *ngIf="cart.length > 0">
+    <ion-item *ngFor="let item of cart; let i = index">
+      <ion-thumbnail slot="start">
+        <img [src]="item.image" alt="{{ item.name }}">
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{ item.name | titlecase }}</h2>
+        <p>Precio: ${{ item.price }}</p>
+      </ion-label>
+      <ion-button color="danger" (click)="removeItem(i)">Eliminar</ion-button>
+    </ion-item>
+  </ion-list>
+
+  <ion-card *ngIf="cart.length > 0">
+    <ion-card-header>
+      <ion-card-title>Total: ${{ getTotal() }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-button expand="full" color="success">Finalizar Compra</ion-button>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
