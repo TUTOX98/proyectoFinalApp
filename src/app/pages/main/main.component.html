@@ -1,13 +1,7 @@
 <app-header></app-header>
 
 <ion-content class="ion-padding">
-  <ng-container *ngIf="isAuthenticated; else showLogin">
-    <router-outlet></router-outlet>
-  </ng-container>
-
-  <ng-template #showLogin>
-    <app-login></app-login>
-  </ng-template>
+  <router-outlet></router-outlet>
 </ion-content>
 
 <app-footer></app-footer>
