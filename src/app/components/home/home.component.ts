@@ -6,6 +6,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { Router } from '@angular/router';
+import { FooterComponent } from '../footer/footer.component';
+import { HeaderComponent } from '../header/header.component';
 
 interface Pokemon {
   name: string;
@@ -17,7 +19,7 @@ interface Pokemon {
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
-  imports: [IonicModule, CommonModule, FormsModule, HttpClientModule],
+  imports: [IonicModule, CommonModule, FormsModule, HttpClientModule,FooterComponent, HeaderComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class HomeComponent implements OnInit {
@@ -69,6 +71,7 @@ export class HomeComponent implements OnInit {
 
   viewDetails(pokemon: Pokemon) {
     console.log('Ver detalles de:', pokemon);
+    this.router.navigate(['/main/details', pokemon.name], { state: { pokemon } });
   }
 
   logout() {

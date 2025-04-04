@@ -1,7 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { IonHeader, IonToolbar } from "@ionic/angular/standalone";
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -10,12 +12,14 @@ import { IonHeader, IonToolbar } from "@ionic/angular/standalone";
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent  implements OnInit {
-logout() {
-    console.log('Logout clicked');
-  }
 
-  constructor() { }
+  constructor( private authService: AuthService, private router: Router) { }
 
   ngOnInit() {}
 
+  logout() {
+    this.authService.logout().then(() => {
+      this.router.navigate(['/login']); 
+    });
+  }
 }

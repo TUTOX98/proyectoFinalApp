@@ -4,11 +4,13 @@ import { IonContent } from "@ionic/angular/standalone";
 import { FormsModule } from '@angular/forms';
 import { CommonModule, Location } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
+import { FooterComponent } from '../footer/footer.component';
+import { HeaderComponent } from '../header/header.component';
 
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
-  imports: [IonicModule, CommonModule, FormsModule],
+  imports: [IonicModule, CommonModule, FormsModule, FooterComponent, HeaderComponent],
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit {
